@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using DesignPatterns.Model.Interfaces;
 
 namespace DesignPatterns.Model.Places
@@ -35,7 +33,13 @@ namespace DesignPatterns.Model.Places
 
        public string GetName()
        {
-          return Id.ToString();
+          return "Sector " + Id.ToString();
+       }
+
+       public void AcceptVisitor(ISectorVisitor sectorVisitor)
+       {
+          sectorVisitor.Visit(this);
+          enclosures.ForEach(e =>e.AcceptVisitor(sectorVisitor));
        }
 
        public void AddEnclosure(IPartInterface enclosure)

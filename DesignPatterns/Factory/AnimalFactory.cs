@@ -9,54 +9,54 @@ namespace DesignPatterns.Factory
     {
        public enum AnimalType
        { 
-          Jaszczomp,
-          Dzik,
-          Halibut,
-          Wonsz,
-          Aksolotl
+          Bird,
+          Mammal,
+          Fish,
+          Reptile,
+          Amphibia
        }
 
-       internal static Animal CreateAnimal(AnimalType t)
+       internal static Animal CreateAnimal(AnimalType t, string name)
        {
           switch (t)
           {
-            case AnimalType.Jaszczomp:
-               return CreateJaszczomp();
-            case AnimalType.Dzik:
-               return CreateDzik();
-            case AnimalType.Halibut:
-               return CreateHalibut();
-             case AnimalType.Wonsz:
-               return CreateWonsz();
-             case AnimalType.Aksolotl:
-               return CreateAksolotl();
+            case AnimalType.Bird:
+               return CreateJaszczomp(name);
+            case AnimalType.Mammal:
+               return CreateDzik(name);
+            case AnimalType.Fish:
+               return CreateHalibut(name);
+             case AnimalType.Reptile:
+               return CreateWonsz(name);
+             case AnimalType.Amphibia:
+               return CreateAksolotl(name);
              default:
                 throw new ArgumentOutOfRangeException(nameof(t), t, null);
           }
        }
-       private static Animal CreateJaszczomp()
+       private static Animal CreateJaszczomp(string name)
        {
-          return new Bird("Jaszczomp", new Carnivore(), new Flying());
+          return new Bird(name, new Carnivore(), new Flying());
        }
 
-       private static Animal CreateDzik()
+       private static Animal CreateDzik(string name)
        {
-          return new Mammal("Dzik", new Omnivore(), new Walking());
+          return new Mammal(name, new Omnivore(), new Walking());
        }
 
-       private static Animal CreateHalibut()
+       private static Animal CreateHalibut(string name)
        {
-          return new Fish("Halibut", new Herbivore(), new Swimming());
+          return new Fish(name, new Herbivore(), new Swimming());
        }
 
-       private static Animal CreateWonsz()
+       private static Animal CreateWonsz(string name)
        {
-          return new Reptile("Wonsz", new Carnivore(), new Crawling());
+          return new Reptile(name, new Carnivore(), new Crawling());
        }
 
-       private static Animal CreateAksolotl()
+       private static Animal CreateAksolotl(string name)
        {
-          return new Amphibia("Aksolotl", new Omnivore(), new Swimming());
+          return new Amphibia(name, new Omnivore(), new Swimming());
        }
    }
 }

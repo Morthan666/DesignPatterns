@@ -10,5 +10,7 @@ namespace DesignPatterns.Model.Interfaces
        List<Animal> GetAnimalsByName(string name);
        List<IPartInterface> GetSubParts();
        string GetName();
+       void AcceptVisitor(ISectorVisitor sectorVisitor);
+
     }
 }

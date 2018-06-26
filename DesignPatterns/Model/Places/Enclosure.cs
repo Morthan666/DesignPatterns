@@ -34,7 +34,12 @@ namespace DesignPatterns.Model.Places
 
        public string GetName()
        {
-          return Id;
+          return "Enclosure " + Id;
+       }
+
+       public void AcceptVisitor(ISectorVisitor sectorVisitor)
+       {
+          sectorVisitor.Visit(this);
        }
 
        public void AddAnimal(Animal animal)

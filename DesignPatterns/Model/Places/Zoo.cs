@@ -8,14 +8,21 @@ namespace DesignPatterns.Model.Places
 {
     class Zoo : IPartInterface
     {
-       public List<IAnimalListener> humans;
+       private static Zoo instance;
+
+       public List<IAnimalListener> Humans;
 
        public List<IPartInterface> Sectors;
 
-       public Zoo()
+       private Zoo() { }
+
+       public static Zoo GetInstance()
        {
-          humans = new List<IAnimalListener>();
-          Sectors = new List<IPartInterface>();
+          if (instance != null) return instance;
+          instance = new Zoo();
+          instance.Humans = new List<IAnimalListener>();
+          instance.Sectors = new List<IPartInterface>();
+          return instance;
        }
 
        public List<Animal> GetAnimals()
@@ -36,6 +43,12 @@ namespace DesignPatterns.Model.Places
        public string GetName()
        {
           return "Zoo";
+       }
+
+       public void AcceptVisitor(ISectorVisitor sectorVisitor)
+       {
+          sectorVisitor.Visit(this);
+          Sectors.ForEach(s=>s.AcceptVisitor(sectorVisitor));
        }
     }
 }

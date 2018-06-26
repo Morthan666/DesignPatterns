@@ -11,7 +11,7 @@ namespace DesignPatterns.Model
 
        public string ReactToAnimalEating()
        {
-          return " repells ";
+          return " wards ";
        }
 
        public string ReactToAnimalMoving()
